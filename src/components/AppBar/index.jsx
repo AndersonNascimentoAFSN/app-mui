@@ -26,7 +26,7 @@ export default function Header() {
   const userInfo = {
     user: "Jon Snow",
     city: "Winterfell",
-    photoUser: "https://www.comboinfinito.com.br/principal/wp-content/uploads/2016/03/jon-snow-game-of-thrones.jpg",
+    photoUser: "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2016/06/Jon-Snow.jpg",
   };
 
   const { user, city, photoUser } = userInfo;

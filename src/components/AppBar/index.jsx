@@ -24,9 +24,9 @@ export default function Header() {
   }
 
   const userInfo = {
-    user: "Anderson Nascimento",
-    city: "Maceió",
-    photoUser: "",
+    user: "Jon Snow",
+    city: "Winterfell",
+    photoUser: "https://www.comboinfinito.com.br/principal/wp-content/uploads/2016/03/jon-snow-game-of-thrones.jpg",
   };
 
   const { user, city, photoUser } = userInfo;
@@ -55,10 +55,7 @@ export default function Header() {
             <Avatar
               className="img-avatar"
               src={photoUser}
-              sx={{
-                width: 56,
-                height: 56,
-              }}
+              sx={{ width: 56, height: 56 }}
             />
             <PopupState variant="popover" popupId="demo-popup-popover">
               {(popupState) => (

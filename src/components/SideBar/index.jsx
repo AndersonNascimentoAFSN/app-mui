@@ -4,10 +4,10 @@ import MuiDrawer from "@mui/material/Drawer";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import GroupsIcon from "@mui/icons-material/Groups";
 import List from "@mui/material/List";
-
+import HomeIcon from "@mui/icons-material/Home";
+import { Link as RouterLink } from "react-router-dom";
 
 const drawerWidth = 240;
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -59,31 +59,58 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+function ListItemLink({
+  icon,
+  primary,
+  to,
+  handleClick,
+  selected,
+  ...otherProps
+}) {
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef(function Link(itemProps, ref) {
+        return <RouterLink to={to} ref={ref} {...itemProps} role={undefined} />;
+      }),
+    [to]
+  );
+
+  return (
+    <li>
+      <ListItemButton
+        component={renderLink}
+        onClick={handleClick}
+        selected={selected}
+        {...otherProps}
+      >
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItemButton>
+    </li>
+  );
+}
+const LinksTo = [
+  { to: "/", name: "Página Inicial", icon: <HomeIcon /> },
+  { to: "/collaborators", name: "Colaboradores", icon: <GroupsIcon /> },
+];
+
 export default function SideBar({ open }) {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const handleListItemClick = (index) => setSelectedIndex(index);
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader />
       <List>
-        {["Inbox", "Starred"].map((text, index) => (
-          <ListItemButton
-            key={text}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
+        {LinksTo.map(({ to, name, icon }, index) => (
+          <ListItemLink
+            key={`${name}-${index}`}
+            to={to}
+            primary={name}
+            icon={icon}
+            handleClick={() => handleListItemClick(index)}
+            selected={selectedIndex === index}
+          />
         ))}
       </List>
     </Drawer>

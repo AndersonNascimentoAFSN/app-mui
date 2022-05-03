@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
-
+import { Outlet } from 'react-router-dom';
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -15,7 +15,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-export default function Layout({ children }) {
+export default function Layout() {
   const [open, setOpen] = React.useState(false);
   const userInfo = {
     user: "Jon Snow",
@@ -33,7 +33,7 @@ export default function Layout({ children }) {
       <SideBar open={open} />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {children}
+        <Outlet />
       </Box>
     </Box>
   );

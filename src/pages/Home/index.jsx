@@ -15,8 +15,8 @@ const Item = styled(Paper)(({ theme }) => {
 
 export default function Home() {
   return (
-    <Container fixed sx={{ height: "100vh" }} maxWidth="xl" component="main">
-      <div>Home</div>
+    <Container fixed sx={{ height: "100vh - 48px" }} maxWidth="xl" component="main">
+      <div>Home Page</div>
       <Grid container spacing={2} rowSpacing={8}>
         <Grid item xs={8}>
           <Item>xs=8</Item>

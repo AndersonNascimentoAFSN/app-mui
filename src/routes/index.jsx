@@ -1,15 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Collaborators from "../pages/Collaborators";
+import Layout from "../Layout";
 
 export default function RoutesApp() {
   return (
-    <Router>
-      <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/collaborators" exact element={<Collaborators />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/collaborators" element={<Collaborators />} />
+      </Route>
+    </Routes>
   );
 }

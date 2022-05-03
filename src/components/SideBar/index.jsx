@@ -90,8 +90,8 @@ function ListItemLink({
   );
 }
 const LinksTo = [
-  { to: "/", name: "Página Inicial", icon: <HomeIcon /> },
-  { to: "/collaborators", name: "Colaboradores", icon: <GroupsIcon /> },
+  { to: "/", name: "Initial Page", icon: <HomeIcon /> },
+  { to: "/characters", name: "Characters", icon: <GroupsIcon /> },
 ];
 
 export default function SideBar({ open }) {

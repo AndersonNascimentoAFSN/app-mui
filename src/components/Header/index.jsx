@@ -50,7 +50,7 @@ export default function Header({ handleDrawer, userInfo }) {
           >
             <MenuIcon />
           </IconButton>
-          <img alt="logo" src="/images/indicadores-logo-branco.svg" />
+          <img alt="logo" src="/images/got.svg" width="90px" height="48px" />
         </Stack>
 
         <Stack direction="row" spacing={2} alignItems="center">

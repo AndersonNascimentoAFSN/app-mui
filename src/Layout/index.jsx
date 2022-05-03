@@ -31,7 +31,7 @@ export default function Layout() {
       <CssBaseline />
       <Header userInfo={userInfo} handleDrawer={handleDrawer} />
       <SideBar open={open} />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="div" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Outlet />
       </Box>
